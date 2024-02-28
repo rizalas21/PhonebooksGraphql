@@ -4,6 +4,6 @@ const contactSchema = new Schema({
     name: String,
     phone: String,
     avatar: String
-}, {timestamps: true});
+}, { timestamps: true });
 
-module.exports = model('contact', contactSchema);
+module.exports = model('Contact', contactSchema);

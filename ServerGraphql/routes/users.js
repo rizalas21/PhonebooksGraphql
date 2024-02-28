@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/Contact.js')
+const Contact = require('../models/Contact')
 
 router.get('/phonebooks', async function (req, res) {
   try {
@@ -13,10 +13,10 @@ router.get('/phonebooks', async function (req, res) {
       ]
     }
 
-    const data = await User.find(params)
+    const data = await Contact.find(params)
     const total = data.length
     const offset = (page - 1) * limit
-    const users = await User.find(params).sort(sort).limit(limit).skip(offset)
+    const users = await Contact.find(params).sort(sort).limit(limit).skip(offset)
     const pages = Math.ceil(total / limit)
 
     res.status(200).json({
@@ -35,7 +35,7 @@ router.get('/phonebooks', async function (req, res) {
 router.get('/phonebooks/:id', async function (req, res) {
   try {
     const { id } = req.params
-    const users = await User.findById(id)
+    const users = await Contact.findById(id)
     res.status(200).json(users)
   } catch (err) {
     res.status(500).json({ err })
@@ -46,7 +46,7 @@ router.post('/phonebooks', async function (req, res) {
   try {
     const { name, phone } = req.body
     if (!name && !phone) res.status(500).json(new Error("name and phone don't be empty"))
-    const user = await User.create({ name, phone, avatar: null })
+    const user = await Contact.create({ name, phone, avatar: null })
     res.status(201).json(user)
   } catch (err) {
     res.status(500).json({ err })
@@ -57,7 +57,7 @@ router.put('/phonebooks/:id', async function (req, res) {
   try {
     const { id } = req.params
     const { name, phone } = req.body
-    const user = await User.findByIdAndUpdate(id, { name, phone }, { new: true })
+    const user = await Contact.findByIdAndUpdate(id, { name, phone }, { new: true })
     res.json(user)
   } catch (err) {
     res.status(500).json({ err })
@@ -66,7 +66,7 @@ router.put('/phonebooks/:id', async function (req, res) {
 
 router.delete('/phonebooks/:id', async function (req, res) {
   try {
-    const user = await User.findByIdAndDelete(req.params.id)
+    const user = await Contact.findByIdAndDelete(req.params.id)
     res.json(user)
   } catch (err) {
     res.status(500).json({ err })
@@ -95,7 +95,7 @@ router.put('/phonebooks/:id/avatar', async function (req, res) {
       }
 
       try {
-        const update = await User.findOneAndUpdate(
+        const update = await Contact.findOneAndUpdate(
           { _id: id },
           { avatar: fileName },
           { new: true })
