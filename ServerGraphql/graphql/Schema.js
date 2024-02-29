@@ -1,5 +1,5 @@
 const { buildSchema } = require('graphql')
-const Contact = require('../models/Contact')
+const { getPhonebooks, createPhonebook, updatePhonebook, deletePhonebook } = require('../services/Scontact')
 
 
 const schema = buildSchema(`
@@ -36,37 +36,10 @@ type Mutation {
 `)
 
 const solution = {
-    getPhonebooks: async ({ page = 1, limit = 30, keyword = '', sort = 'asc' }) => {
-        try {
-            const offset = (page - 1) * limit
-            const data = await Contact.find().limit(limit).skip(offset)
-            return {
-                phonebooks: data,
-                page,
-                limit,
-            }
-        }
-        catch (err) {
-            console.log(err)
-        }
-    },
-    createPhonebook: async ({ input }) => {
-        try {
-            const data = await Contact.create(input)
-            return data
-        } catch (err) {
-            console.log(err)
-        }
-    },
-    updatePhonebook: async ({ _id, input }) => {
-        try {
-            const data = await Contact.findOneAndUpdate(_id, input, { new: true })
-            return data
-        } catch (err) {
-            console.log(err)
-        }
-    },
-    deletePhonebook: async ({ _id }) => await Contact.findByIdAndDelete(_id)
+    getPhonebooks: ({ page = 1, limit = 30, keyword = '', sort = 'asc' }) => getPhonebooks({ page, limit, keyword, sort }),
+    createPhonebook: ({ input }) => createPhonebook(input),
+    updatePhonebook: ({ _id, input }) => updatePhonebook(_id, input),
+    deletePhonebook: ({ _id }) => deletePhonebook(_id)
 }
 
 module.exports = { schema, solution }
@@ -75,10 +48,10 @@ module.exports = { schema, solution }
 query{
 getPhonebooks{
         phonebooks {
-          _id,
-      name,
-      phone,
-      avatar
+            _id,
+            name,
+            phone,
+            avatar
         }
     }
 }
