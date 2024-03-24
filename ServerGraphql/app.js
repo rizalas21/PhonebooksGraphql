@@ -5,7 +5,7 @@ var logger = require('morgan');
 var fileUpload = require('express-fileupload')
 var { graphqlHTTP } = require('express-graphql')
 var { schema, solution } = require('./graphql/Schema')
-
+var cors = require('cors')
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
@@ -23,6 +23,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors())
 app.use(fileUpload())
 app.use(express.static(path.join(__dirname, 'public')));
 

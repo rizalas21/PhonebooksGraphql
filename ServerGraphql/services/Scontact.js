@@ -15,6 +15,7 @@ const getPhonebooks = async ({ page = 1, limit = 30, keyword = '', sort = 'asc' 
         const total = dataCount.length
         const offset = (page - 1) * limit
         const pages = Math.ceil(total / limit)
+        console.log('be params', params)
         const data = await Contact.find(params).sort({ name: sort }).limit(limit).skip(offset)
         return {
             phonebooks: data,

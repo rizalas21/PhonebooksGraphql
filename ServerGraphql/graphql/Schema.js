@@ -30,16 +30,16 @@ type Query {
 
 type Mutation {
     createPhonebook(input: PhonebookInput): Phonebook
-    updatePhonebook(_id: ID, input: PhonebookInput): Phonebook
     deletePhonebook(_id: ID): Phonebook
+    updatePhonebook(_id: ID, input: PhonebookInput): Phonebook
 }
 `)
 
 const solution = {
-    getPhonebooks: ({ page = 1, limit = 30, keyword = '', sort = 'asc' }) => getPhonebooks({ page, limit, keyword, sort }),
-    createPhonebook: ({ input }) => createPhonebook(input),
-    updatePhonebook: ({ _id, input }) => updatePhonebook(_id, input),
-    deletePhonebook: ({ _id }) => deletePhonebook(_id)
+  getPhonebooks: ({ page = 1, limit = 30, keyword = '', sort = 'asc' }) => getPhonebooks({ page, limit, keyword, sort }),
+  createPhonebook: ({ input }) => createPhonebook(input),
+  updatePhonebook: ({ _id, input }) => updatePhonebook(_id, input),
+  deletePhonebook: ({ _id }) => deletePhonebook(_id)
 }
 
 module.exports = { schema, solution }

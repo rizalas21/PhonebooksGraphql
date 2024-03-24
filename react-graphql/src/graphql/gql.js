@@ -8,8 +8,8 @@ export const GET_PHONEBOOKS = gql`
     $sort: String
   ) {
     getPhonebooks(page: $page, limit: $limit, keyword: $keyword, sort: $sort) {
-      Phonebooks {
-        id
+      phonebooks {
+        _id
         name
         phone
         avatar
@@ -34,7 +34,7 @@ export const ADD_PHONEBOOK = gql`
 `;
 
 export const DELETE_PHONEBOOK = gql`
-mutation deletePhonebook($_id:!ID) {
+mutation deletePhonebook($_id:ID!) {
     deletePhonebook(_id:$_id) {
         _id
         name
