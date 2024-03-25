@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client"
 import ContactItem from "./ContactItem";
 import { GET_PHONEBOOKS } from "../graphql/gql";
 
-export default function ContactList(filter) {
+export default function ContactList({ filter }) {
   const [contacts, setContacts] = useState([])
   const [page, setPage] = useState(1)
   const [pages, setPages] = useState(1)
@@ -60,7 +60,7 @@ export default function ContactList(filter) {
       setPages(data.getPhonebooks.pages)
     }
 
-  }, [setContacts, loading, data, filter])
+  }, [data, filter])
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>{error.message}</p>

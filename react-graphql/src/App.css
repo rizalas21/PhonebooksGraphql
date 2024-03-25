@@ -10,5 +10,237 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
+  padding: 10px;
+}
+
+.all {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-search {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 0px;
+  width: 1200px;
+}
+
+.icon {
+  background-color: rgb(175, 107, 24);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0px 10px;
+}
+
+.btn-icon {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(175, 107, 24);
+  background-color: rgb(175, 107, 24);
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#input-field {
+  padding-left: 40px;
+  height: 30px;
+  width: 100%;
+  border: none;
+}
+
+.button-search {
+  position: absolute;
+  height: 30px;
+  width: 35px;
+  left: 1px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+}
+
+/* ini untuk Contact */
+
+.Container-Content {
+  background-color: aqua;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-data {
+  display: inline-flex;
+  width: 17%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  background-color: rgb(165, 163, 160);
+  border-color: rgb(17, 16, 16);
+  margin: 10px 5px 10px 6px;
+  padding: 5px 2px 5px 5px;
+}
+
+.container-image {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  height: 90px;
+  width: 80px;
+  margin-top: 15px;
+  border-radius: 50%;
+  background-color: aliceblue;
+  float: left;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  height: 100px;
+  width: 110px;
+}
+
+.btn-edit {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(165, 163, 160);
+  font-size: medium;
+  border: none;
+}
+
+.btn-delete {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(165, 163, 160);
+  font-size: medium;
+  border: none;
+}
+
+.button {
+  display: inline-flex;
+  margin: 5px;
+  background-color: rgb(165, 163, 160);
+  margin-left: 10px;
+}
+
+p {
+  text-align: left;
+  margin: 3px 0px;
+  font-size: 13px;
+}
+
+/* untuk add */
+
+.container {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-add {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  margin: 150px 0px 0px 0px;
+  width: 70%;
+}
+
+.input-add {
+  margin: 5px 0px;
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 40px;
+  padding-left: 10px;
+}
+
+.btn-add {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0px;
+}
+
+.btn-save {
+  width: 47%;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(182, 159, 33);
+  text-decoration: none;
+}
+
+.p-add {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  text-decoration: none;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1000px) {
+  .container-search {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+  }
+
+  #main-data {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width:470px) {
+  .container-search {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+
+@media screen and (max-width: 160px) {
+
+  .container-search {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+  }
+
+  #main-data {
+    padding: 0px;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+  }
 }
