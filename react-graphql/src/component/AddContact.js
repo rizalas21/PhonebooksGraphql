@@ -1,13 +1,24 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { ADD_PHONEBOOK, GET_PHONEBOOKS } from "../graphql/gql"
+import { useMutation } from "@apollo/client"
 
 export default function AddContact() {
   const navigate = useNavigate()
-  const [user, setUser] = useState({ name: "", phone: "" })
+  const [user, setUser] = useState({ name: null, phone: null })
+  const [createPhonebook, { data, loading, error }] = useMutation(ADD_PHONEBOOK, {
+    refetchQueries: [{ query: GET_PHONEBOOKS }]
+  })
+
+  if (loading) return 'Submitting...';
+
+  if (error) return `Submission error! ${error.message}`;
+
+  if (data) navigate("/")
 
   function AddData(e) {
     e.preventDefault()
-
+    createPhonebook({ variables: { input: user } })
   }
 
   return (

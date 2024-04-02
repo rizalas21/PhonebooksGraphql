@@ -17,7 +17,7 @@ export default function ContactItem({ contact }) {
   }
 
   function Delete(contact) {
-
+    
   }
 
   if (isEdit) {

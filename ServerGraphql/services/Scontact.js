@@ -29,7 +29,7 @@ const getPhonebooks = async ({ page = 1, limit = 30, keyword = '', sort = 'asc' 
     }
 }
 
-const createPhonebook = async ({ input }) => {
+const createPhonebook = async (input) => {
     try {
         const data = await Contact.create(input)
         return data
